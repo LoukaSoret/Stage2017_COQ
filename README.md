@@ -16,4 +16,4 @@ https://coq.inria.fr/download
 
 Donne la trace de la preuve dans la sortie standard et la stock dans l'environement de la session coqtop.
 
-Pour les fichiers requierant "tactics.v" le seul moyen que j'ai trouver et de copier/coller le contenu de "tactics.v" dans coqtop puis de faire de même avec le fichier de preuve.
+Pour les fichiers requierant "tactics.v" le seul moyen que j'ai trouver pour le moment et de copier/coller le contenu de "tactics.v" dans coqtop puis de faire de même avec le fichier de preuve.
