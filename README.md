@@ -3,7 +3,13 @@ La logique du premier ordre prouver avec Coq
 
 ## Synopsis
 
-Adapter les tactiques de preuve en logique du premier ordre de COQ à celles du cours de logique et démonstration automatique (INF402). 
+Adapter les tactiques de preuve en logique du premier ordre de COQ à celles du cours de logique et démonstration automatique (INF402).
+
+## Liste du contenu
+
+- Preuve_tactique_classique/ : preuves avec les tactiques natives de Coq;
+- Preuve_tactique_cours/ : preuves requierant "tactics.v" utilisant les tactiques réecrites ( Deduction naturelle seulement pour l'instant );
+- tactics.v : tactiques du cours écrites avec Ltac.
 
 ## Installation
 
