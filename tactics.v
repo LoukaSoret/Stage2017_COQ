@@ -58,7 +58,7 @@ Ltac ou_elim h :=
 	end
 .
 
-Ltac efq := exfalso.
+Ltac efq := try exfalso.
 
 Ltac raa :=
 	match goal with
