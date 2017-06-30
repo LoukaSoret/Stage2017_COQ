@@ -33,8 +33,8 @@ implique_intro HA.
 et_elim_1 H0 H0_G.
 et_elim_2 H0 H0_D.
 implique_elim H0_D.
-implique_elim H0_G.
-exact HA.
+implique_elim H0_G HA HB.
+exact HB.
 
 Qed.
 
