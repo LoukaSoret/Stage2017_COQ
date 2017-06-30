@@ -3,7 +3,7 @@ La logique du premier ordre prouvée avec Coq
 
 ## Synopsis
 
-Adapter les tactiques de preuve en logique du premier ordre de COQ à celles du cours de logique et démonstration automatique (INF402).
+Adapter les tactiques de preuve en logique du premier ordre de COQ à celles du cours de _logique et démonstration automatique_ (INF402).
 
 ## Liste du contenu
 
