@@ -169,8 +169,82 @@ Ltac efq := try exfalso.
 
 Ltac raa :=
 	match goal with
-	| |- (~~ _ ) => try (intro tmp ; apply tmp ; clear tmp)
-	| |- ( _ -> False -> False) => try (intro tmp ; apply tmp ; clear tmp)
+	| |- (~~ _ ) => let tmp := fresh in try (intro tmp ; apply tmp ; clear tmp)
+	| |- ( _ -> False -> False) => let tmp := fresh in try (intro tmp ; apply tmp ; clear tmp)
 	| _ => idtac "Erreur: reduction a l absurde impossible sur le but courant."
 	end
 .
+
+(****************************************************************)
+(*                      QUANTIFICATEURS                         *)
+(****************************************************************)
+
+
+(****************************************************************)
+(*                 * pourtout_intro h :                         *)
+(*        A        * Si le but est de la forme forall x, A      *)
+(*  -------------  * le remplace par A et ajoute une instance   *)
+(*   forall x, A   * de x comme hypothese. Cette nouvelle       *)
+(*                 * hypothese est nommee h.                    *)
+(****************************************************************)
+
+Ltac pourtout_intro h :=
+	match goal with
+	| |- forall _ , _ => intro h
+	| _ => idtac "Erreur: Aucun pour tout decomposable dans le but courant."
+	end
+.
+
+
+(****************************************************************)
+(*                 * pourtout_elim h i t :                      *)
+(*   forall x, A   * Si h est de la forme forall x, A cree une  *)
+(*  -------------  * nouvelle hypothese i qui est               *)
+(*    A < x:=t >   * l'instantiation de h avec < x:=t >.        *)
+(*                 *                                            *)
+(****************************************************************)
+
+Ltac pourtout_elim h i t :=
+	match type of h with
+	| forall _ , _ => pose ( i := h t )
+	| _ => idtac "Erreur: Aucun pour tout decomposable dans l'hypothese."
+	end
+.
+
+
+(****************************************************************)
+(*                 * existe_intro t :                           *)
+(*   A < x:=t >    * Si le but est de la forme exists x, A      *)
+(*  -------------  * le remplace par A < x:=t >.                *)
+(*   exists x, A   *                                            *)
+(*                 *                                            *)
+(****************************************************************)
+
+Ltac existe_intro t :=
+	match goal with
+	| |- exists _ , _ => exists t
+	| _ => idtac "Erreur: Le but courant ne contient pas de il existe decomposable."
+	end
+.
+
+
+(****************************************************************)
+(*                        * existe_elim h i :                   *)
+(*   (exists x, A) A=>B   * Si le but est de la forme B et h de *)
+(*  --------------------  * la forme (exists x, A) remplace le  *)
+(*            B           * but courant par A=>B et ajout une   *)
+(*                        * instance i de x dans les hypotheses *)
+(****************************************************************)
+
+Ltac existe_elim h i :=
+	match type of h with
+	| exists _ , _ => elim h ; intro i
+	| _ => idtac "Erreur : l hypothese ne contient pas de il existe decomposable."
+	end
+.
+
+
+(****************************************************************)
+(*                          EGALITE                             *)
+(****************************************************************)
+
