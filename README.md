@@ -8,7 +8,7 @@ Adapter les tactiques de preuve en logique du premier ordre de COQ à celles du 
 ## Liste du contenu
 
 - Preuve_tactique_classique/ : preuves avec les tactiques natives de Coq;
-- Preuve_tactique_cours/ : preuves utilisant les tactiques réecrites ( Déduction naturelle seulement pour l'instant );
+- Preuve_tactique_cours/ : preuves utilisant les tactiques réecrites ( Premier ordre sans egalité );
 - tactics.v : tactiques du cours écrites avec Ltac.
 
 ## Installation
